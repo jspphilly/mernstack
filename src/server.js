@@ -43,13 +43,17 @@ router.route('/comments')
 //retrieve all comments from the database
 .get(function(req, res) {
 //looks at our Comment Schema
-Comment.find(function(err, comments) {
+    Comment.find(function(err, comments) {
         if (err){
             res.send(err);
-            //responds with a json object of our database comments.
-            res.json(comments)
-        }
+        }  
+        
+        res.json(comments)
     });
+
+    // res.json({
+    //     message: 'The endpoint works'
+    // });
 })
 //post new comment to the database
 .post(function(req, res) {
@@ -63,6 +67,16 @@ Comment.find(function(err, comments) {
         res.json({ message: 'Comment successfully added!' });
     });
 });
+
+//Testing new API
+router.route('/test')
+.get(function (req, res) {
+    res.json({
+        message: 'Hello World'
+    });
+});
+
+
 //Use our router configuration when we call /api
 
 //Use our router configuration when we call /api
